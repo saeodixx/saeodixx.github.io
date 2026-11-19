@@ -13,9 +13,9 @@
   };
 
   document.title = `${d.name} | ${d.role}`;
-  $("logo").textContent = `~/${d.handle || "portfolio"}`;
+  $("logo").textContent = d.handle || d.name;
   $("name").textContent = d.name;
-  $("role").textContent = `> ${d.role}`;
+  $("role").textContent = d.role;
   $("tagline").textContent = d.tagline;
   $("photo").src = d.photo;
 
@@ -40,9 +40,9 @@
   if (d.ai) {
     $("ai-intro").textContent = d.ai.intro;
     $("ai-body").innerHTML = d.ai.points
-      .map((p) => `<div class="ai-card"><div class="ai-icon">${esc(p.icon)}</div><h3>${esc(p.title)}</h3><p>${esc(p.body)}</p></div>`)
+      .map((p) => `<div class="ai-card"><h3>${esc(p.title)}</h3><p>${esc(p.body)}</p></div>`)
       .join("");
-    $("ai-tools").innerHTML = `<span class="label">$ tools --ai</span>` + d.ai.tools.map((t) => `<span class="chip">${esc(t)}</span>`).join("");
+    $("ai-tools").innerHTML = `<h3>자주 쓰는 AI 도구</h3><div class="chips">` + d.ai.tools.map((t) => `<span class="chip">${esc(t)}</span>`).join("") + `</div>`;
   } else {
     $("ai").remove();
   }
@@ -56,7 +56,7 @@
       <article class="project">
         ${p.image ? `<a class="thumb" href="${esc(p.github || p.demo || "#")}" target="_blank" rel="noopener"><img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy" /></a>` : ""}
         <div class="top">
-          <span class="mono period">${esc(p.period)}</span>
+          <span class="period">${esc(p.period)}</span>
           <div class="icons">
             ${p.github ? `<a href="${esc(p.github)}" target="_blank" rel="noopener" aria-label="GitHub">${icons.github}</a>` : ""}
             ${p.demo ? `<a href="${esc(p.demo)}" target="_blank" rel="noopener" aria-label="Demo">${icons.external}</a>` : ""}
@@ -64,12 +64,13 @@
         </div>
         <h3>${esc(p.title)}${p.badge ? ` <span class="badge">${esc(p.badge)}</span>` : ""}</h3>
         <p>${esc(p.description)}</p>
-        <div class="tags mono">${p.tags.map((t) => `<span>#${esc(t)}</span>`).join("")}</div>
+        ${p.points ? `<ul class="points">${p.points.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>` : ""}
+        <div class="tags">${p.tags.map((t) => `<span>${esc(t)}</span>`).join("")}</div>
       </article>`)
     .join("");
 
   $("experience-body").innerHTML = d.experience
-    .map((e) => `<li><span class="mono period">${esc(e.period)}</span><h3>${esc(e.title)}</h3><div class="r">${esc(e.role)}</div>${e.detail ? `<p>${esc(e.detail)}</p>` : ""}</li>`)
+    .map((e) => `<li><span class="period">${esc(e.period)}</span><h3>${esc(e.title)}</h3><div class="r">${esc(e.role)}</div>${e.detail ? `<p>${esc(e.detail)}</p>` : ""}</li>`)
     .join("");
 
   if (d.designs && d.designs.length) {
@@ -78,11 +79,10 @@
       <div class="design-case">
         <div class="design-head">
           <div>
-            <span class="badge tool">${esc(c.tool)}</span>
             <h3>${esc(c.title)}</h3>
             <p class="design-intro">${esc(c.intro)}</p>
           </div>
-          ${c.link ? `<a class="btn" href="${esc(c.link)}" target="_blank" rel="noopener">${esc(c.linkLabel || "보기 ↗")}</a>` : ""}
+          ${c.link ? `<a class="btn" href="${esc(c.link)}" target="_blank" rel="noopener">${esc(c.linkLabel || "보기")}</a>` : ""}
         </div>
         <div class="design-shots">
           ${c.shots.map((s) => `<figure><a href="${esc(s.src)}" target="_blank" rel="noopener"><img src="${esc(s.src)}" alt="${esc(s.caption)}" loading="lazy" /></a><figcaption>${esc(s.caption)}</figcaption></figure>`).join("")}
@@ -98,9 +98,9 @@
       <article class="award">
         ${a.image ? `<figure class="award-photo"><img src="${esc(a.image)}" alt="${esc(a.caption || a.title)}" loading="lazy" />${a.caption ? `<figcaption>${esc(a.caption)}</figcaption>` : ""}</figure>` : ""}
         <div class="award-body">
-          <span class="mono period">${esc(a.period)}</span>
+          <span class="period">${esc(a.period)}</span>
           <h3>${esc(a.title)}</h3>
-          <div class="award-highlight">🏆 ${esc(a.highlight)}</div>
+          <p class="award-highlight">${esc(a.highlight)}</p>
           <ul>${a.points.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>
         </div>
       </article>`)
@@ -115,11 +115,11 @@
   $("email-text").textContent = d.links.email;
   $("email-text").href = `mailto:${d.links.email}`;
   $("copy-btn").addEventListener("click", async () => {
-    try { await navigator.clipboard.writeText(d.links.email); $("copy-btn").textContent = "복사됨 ✓"; }
+    try { await navigator.clipboard.writeText(d.links.email); $("copy-btn").textContent = "복사됨"; }
     catch { $("copy-btn").textContent = "직접 복사해 주세요"; }
     setTimeout(() => ($("copy-btn").textContent = "복사"), 1800);
   });
-  $("footer").textContent = `© ${new Date().getFullYear()} ${d.name} (@${d.handle}) · Built with ♥ & vanilla JS`;
+  $("footer").textContent = `© ${new Date().getFullYear()} ${d.name} (${d.handle})`;
 
   // nav border on scroll
   const nav = document.querySelector(".nav");
