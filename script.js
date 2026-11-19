@@ -81,6 +81,7 @@
           <div>
             <h3>${esc(c.title)}</h3>
             <p class="design-intro">${esc(c.intro)}</p>
+            ${c.points ? `<ul class="points">${c.points.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>` : ""}
           </div>
           ${c.link ? `<a class="btn" href="${esc(c.link)}" target="_blank" rel="noopener">${esc(c.linkLabel || "보기")}</a>` : ""}
         </div>

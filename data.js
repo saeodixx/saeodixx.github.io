@@ -58,7 +58,14 @@ window.PORTFOLIO = {
     {
       title: "모아루틴: Claude Artifact로 기획과 UI를 먼저",
       tool: "Claude Artifact",
-      intro: "모아루틴은 코드보다 시안이 먼저였습니다. Claude Artifact로 홈, 교감 창, 챗봇, 공부 타이머 시안을 만들어 직접 눌러 보며 색과 모양을 여러 번 고쳤고, 밤하늘 보라 바탕에 네모난 픽셀 테두리를 쓰는 테마로 정했습니다. 그 시안을 기준으로 Flutter 화면을 옮기고, 화면이 바뀔 때마다 골든 테스트로 캡처해 작업 일지에 남겼습니다. 중간발표 자료도 Artifact로 만들었습니다.",
+      intro: "Claude Artifact로 홈, 교감 창, 챗봇, 공부 타이머 시안을 먼저 만들어 눌러 보며 테마를 정하고, 그 시안을 Flutter 위젯으로 옮겼습니다. 시안과 실제 화면이 어긋나지 않게 색과 크기를 코드 상수로 묶고, 화면 변경은 골든 테스트로 확인했습니다.",
+      points: [
+        "디자인 토큰: 시안의 색을 AppColors(밤 보라 #12101F, 포인트 #6D5EC4 등)와 AppTheme으로 옮기고, 숫자와 제목은 픽셀 글꼴 Galmuri11, 본문은 Pretendard로 나눴습니다.",
+        "교감 창: DragTarget으로 물약을 길게 눌러 몬스터에게 끌어 먹이고, 놀아주기에서는 땅을 누른 곳으로 공이 날아가 몬스터가 뛰어가 잡도록 만들었습니다.",
+        "몬스터 크기: 그림 비율이 달라 몸집이 제각각이던 문제를, Python 스크립트로 PNG 크기 표(sprite_sizes.dart)를 자동 생성하고 모든 종을 같은 넓이로 맞춰 풀었습니다. 표와 실제 그림이 어긋나면 테스트가 실패합니다.",
+        "공부 타이머: 뽀모도로 단계와 남은 시간을 흐른 시간에서 계산하고, 공부방이 남는 높이를 차지하는 한 화면 배치에 180px보다 낮아지면 스크롤로 바뀌게 했습니다. 빗소리 등 공부 소리 3개는 numpy로 합성해 ffmpeg로 만들었습니다.",
+        "검증: matchesGoldenFile로 390×844, 360×740 화면을 PNG로 남겨 시안과 비교하고, flutter analyze와 테스트 161개로 확인했습니다.",
+      ],
       link: "https://github.com/dynamicduo-daelim/habit_monster",
       linkLabel: "GitHub에서 보기",
       shots: [
