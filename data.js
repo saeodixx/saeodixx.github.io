@@ -15,21 +15,40 @@ window.PORTFOLIO = {
   },
 
   about: [
-    "2005년생, 대림대학교 컴퓨터정보학부 졸업예정.",
-    "Flutter로 모바일·데스크톱 앱을 만들고, Spring Boot·Node.js 서버와 PostgreSQL, Docker·AWS 배포까지 해 봤습니다.",
-    "기획을 먼저 쓰고 AI와 함께 구현하며, 결과는 테스트로 확인합니다.",
+    "2005년생, 대림대학교 컴퓨터정보학부 졸업예정인 성수연입니다.",
+    "Flutter 앱 개발을 중심으로 공부하고 만들어 왔습니다. 습관 육성 게임 앱, 뷰티 커뮤니티 앱 같은 모바일 앱부터 Windows·macOS 데스크톱 앱까지 Flutter로 개발했고, 상태 관리·REST API 연동·이미지 업로드·소셜 로그인처럼 실제 서비스에 필요한 기능을 직접 구현했습니다.",
+    "앱만 만드는 데서 멈추지 않고, 앱이 붙을 서버(Spring Boot·Node.js)와 DB(PostgreSQL), Docker·AWS 배포까지 직접 해 봤습니다. 그래서 백엔드 개발자와 API를 같이 설계하고, 문제가 생기면 앱과 서버 어느 쪽 문제인지 스스로 찾을 수 있습니다.",
+    "AI를 '대신 짜주는 도구'가 아니라 '같이 생각하는 팀원'으로 씁니다. 기획서와 결정 기록을 먼저 쓰고 AI와 함께 구현하며, 나온 코드는 테스트와 문서로 직접 검증합니다. 그 과정에서 AI 에이전트 생태계 자체에 관심이 생겨, AI 코딩 에이전트의 스킬을 관리하는 앱 MgrS까지 만들었습니다.",
   ],
 
   // AI 활용 섹션
   ai: {
-    intro: "AI가 일하는 환경을 직접 설계하고, 새 AI 도구를 빠르게 찾아 씁니다.",
+    intro: "AI를 잘 쓰는 것도 실력이라고 생각합니다. AI에게 일을 맡기는 데서 그치지 않고, AI가 일하는 환경(하네스)을 직접 설계하고, 새로 나오는 AI 스킬·도구를 빠르게 찾아 내 작업에 붙입니다.",
     points: [
-      { title: "하네스 엔지니어링", body: "CLAUDE.md 규칙, 직접 만든 스킬, hooks로 에이전트 작업 환경 설계. 일지 자동 기록, 교정 내용을 규칙으로 승인." },
-      { title: "AI 스킬 트렌드 탐색", body: "Agent Skills·MCP·플러그인을 바로 써 봄. 스킬 140여 개 운용, 반복 작업은 직접 스킬로." },
-      { title: "AI 페어 프로그래밍", body: "기획서·결정 기록을 먼저 쓰고 AI와 구현, 테스트로 검증." },
-      { title: "서비스에 LLM 연동", body: "TreePlan: Gemini 키를 서버에 숨기고 실패 시 예비 모델로 자동 전환." },
-      { title: "AI 에이전트 도구 개발", body: "AI 해커톤에서 스킬 관리 앱 MgrS 완성, Vercel로 배포." },
-      { title: "책임 있게 쓰기", body: "외부 전송 범위를 알리고 비밀값은 가린 뒤 전송." },
+      {
+        title: "하네스 엔지니어링",
+        body: "CLAUDE.md 규칙, 직접 만든 스킬(/inbox, /init-project, /meeting), hooks로 AI 에이전트의 작업 환경을 설계합니다. 대화가 끝나면 hook이 일지를 자동으로 쓰고, 매일 내가 AI를 고쳐 준 말을 모아 규칙 후보로 제안하게 해서, 승인한 규칙만 다음부터 지키게 합니다. 토큰이 떨어지면 Codex → Gemini → Antigravity 순서로 자동으로 넘깁니다.",
+      },
+      {
+        title: "AI 스킬 트렌드 탐색",
+        body: "Agent Skills·MCP·플러그인 생태계가 나오면 바로 써 봅니다. find-skills로 레지스트리를 뒤져 필요한 스킬을 찾고, 지금 Claude Code에 스킬 140여 개와 Superpowers·Vercel 플러그인, Figma·JetBrains·AWS MCP를 연결해 씁니다. 써 보고 안 맞는 건 정리하고, 반복되는 일은 직접 스킬로 만듭니다. 이 관심이 MgrS 개발로 이어졌습니다.",
+      },
+      {
+        title: "AI 페어 프로그래밍",
+        body: "기획서와 결정 기록을 먼저 쓰고 AI와 함께 구현합니다. 회의록에 @claude를 달면 AI가 답하고 결정·할 일을 정리해 줍니다. 나온 코드는 테스트와 문서로 직접 확인합니다.",
+      },
+      {
+        title: "서비스에 LLM 연동",
+        body: "TreePlan에서 Gemini API를 서버 뒤에 숨겨 키 노출을 막고, 시간 초과·429·503 시 예비 모델로 자동 전환되도록 설계했습니다. 포폴링에는 실행 실패 원인 분석·QA 요약 AI를 넣었습니다.",
+      },
+      {
+        title: "AI 에이전트 도구 개발",
+        body: "AI 해커톤에서 Claude Code·Codex 스킬을 한 화면에서 보고, 배포하고, 비교하는 앱 MgrS를 기획·개발해 Vercel로 완성했습니다.",
+      },
+      {
+        title: "책임 있게 쓰기",
+        body: "외부로 보내는 데이터 범위를 사용자에게 알리고, 비밀값은 가린 뒤 전송하며, 로컬 LLM 전환까지 검토합니다. 빠르게 만들되 안전하게.",
+      },
     ],
     tools: ["Claude Code", "Codex", "Gemini", "Antigravity", "ChatGPT", "Agent Skills", "MCP", "Plugins", "Hooks", "Local LLM"],
   },
