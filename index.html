@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio</title>
+  <meta name="description" content="개발자 포트폴리오" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="glow" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a href="#top" class="logo mono" id="logo">~/portfolio</a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#ai">AI</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#design">Design</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-text">
+        <p class="mono eyebrow">$ whoami</p>
+        <h1><span id="name"></span><span class="caret">_</span></h1>
+        <p class="role mono" id="role"></p>
+        <p class="tagline" id="tagline"></p>
+        <div class="links" id="hero-links"></div>
+      </div>
+      <div class="hero-photo">
+        <img id="photo" alt="프로필 사진" />
+      </div>
+    </section>
+
+    <section id="about" class="reveal">
+      <h2><span class="mono num">01.</span> About</h2>
+      <div id="about-body" class="about"></div>
+    </section>
+
+    <section id="ai" class="reveal">
+      <h2><span class="mono num">02.</span> Building with AI</h2>
+      <p id="ai-intro" class="ai-intro"></p>
+      <div id="ai-body" class="ai-grid"></div>
+      <div id="ai-tools" class="ai-tools mono"></div>
+    </section>
+
+    <section id="skills" class="reveal">
+      <h2><span class="mono num">03.</span> Skills</h2>
+      <div id="skills-body" class="skills"></div>
+    </section>
+
+    <section id="projects" class="reveal">
+      <h2><span class="mono num">04.</span> Projects</h2>
+      <div id="projects-body" class="projects"></div>
+    </section>
+
+    <section id="design" class="reveal">
+      <h2><span class="mono num">05.</span> UI Design &amp; Planning</h2>
+      <div id="design-body"></div>
+    </section>
+
+    <section id="experience" class="reveal">
+      <h2><span class="mono num">06.</span> Experience &amp; Education</h2>
+      <div id="awards-body"></div>
+      <div class="exp-grid">
+        <ol id="experience-body" class="timeline"></ol>
+        <div class="certs">
+          <h3 class="mono">Certifications</h3>
+          <ul id="certs-body"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="reveal contact">
+      <h2><span class="mono num">07.</span> Contact</h2>
+      <p>함께 일하고 싶거나 궁금한 점이 있다면 편하게 연락주세요.</p>
+      <div class="email-box">
+        <a id="email-text" class="mono" href="#"></a>
+        <button id="copy-btn" class="copy-btn" type="button">복사</button>
+      </div>
+      <a id="mail-btn" class="btn primary" href="#">메일 보내기 ✉️</a>
+    </section>
+  </main>
+
+  <footer class="mono" id="footer"></footer>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
